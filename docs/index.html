@@ -18,8 +18,8 @@
 
 <h1 id="t-mobi-documentation">Tandem Mobi (documentation)</h1>
 
-<b>Version:</b>&nbsp;&nbsp; 0.7.x (Phase 4)<br>
-<b>Last updated:</b>&nbsp;&nbsp;January 18, 2026<br><br>
+<b>Version:</b>&nbsp;&nbsp; 0.9.x (Phase 5)<br>
+<b>Last updated:</b>&nbsp;&nbsp; October 4, 2026<br><br>
 
 
 <hr>
@@ -30,7 +30,7 @@ While this implementation was already put into Beta phase, there are still a few
 
 If you find anything that doesn't work, please check there first. If you can't find it, post a message in our testing discord group <b>#t_mobi-test</b>, so that we can discuss if this is a bug or just how implementation works. If we discover something new, we will add it as bug. <br><br>
 
-The current plan is to implement as much missing functionality as possible in January, while you are all testing what we currently have.<br><br>
+The current plan is to finalize changes by end of year and then merge it into official AAPS repository ready for Christmas or nearest release after.<br><br>
 
 Please read this entire documentation page before you start testing. Note that in some cases you may need to restart AAPS after you set up your pump for first time.
 
@@ -39,6 +39,8 @@ Please read this entire documentation page before you start testing. Note that i
 <b>This documentation is mostly complete. There might be some sections missing (let us know if you think so), and any new functionalities are of course not included.</b>
 <br><br>
 
+<b>Pictures:</b> AAPS 4 has switched to Compose UI now, but here you will still see some pictures from old UI. I am slowly replacing those old images, so please be patient... Implementation of functionalities has precedence over documentation.</b>
+<br><br>
 
 <hr>
 
@@ -403,7 +405,7 @@ To view the types of alerts and alarms which can be triggered, see the linked do
 
 <h3 id="mobi-details-events">Events</h3>
 
-AAPS is connected to the pump 24/7. The main reason for this are events (which are at this moment not always working correctly, but issue is being investigated - on pumpX2 library level), which give real-time warnings, notifications and information from the pump. Events just serve as a way to tell the connected phone that it should trigger requests for more information from the pump for which the user may need to be notified. 
+AAPS is connected to the pump 24/7. The main reason for this are events, which give real-time warnings, notifications and information from the pump. Events just serve as a way to tell the connected phone that it should trigger requests for more information from the pump for which the user may need to be notified. 
 
 
 <br>
