@@ -15,9 +15,8 @@ As of November 2026, the project is in thPhase 4/Phase 5 Stage..
 this is still a testing phase and not all functionalities are fully implemented 
 and/or tested. Your use of this driver is at your own risk and you should be
 aware that it may not work as expected.
-> You can test with your pump, with it not being connected to anything.
-> Until we have reached the end of Phase 3, important security measures will not yet be fully implemented
-> (comparing treatment data with pump history records, reporting to AAPS/Loop that treatment has stopped and at what time, etc). 
+> While testing please report all issues either here or report them in the 
+Discord chat, so that we can keep track of all issues and not have duplicates.
 
 
 # AAPS - Tandem Mobi Driver Documentation
@@ -29,7 +28,13 @@ Full documentation is maintained on this page: https://andyrozman.github.io/AAPS
 
 1. [ControlX2](https://github.com/jwoglom/controlX2)
     - Download the latest ControlX2 release on the [GitHub Releases page](https://github.com/jwoglom/controlX2/releases)
-    - Install the app and go through the setup wizard to pair it with your pump. (to pair your pump you need to put it on the charging pad, wait, then remove it and press the button on the pump quickly 2 times). 
+    - Install the app and go through the setup wizard to pair it with your pump.
+    - (to pair your pump you need to put it on the charging pad, wait, then
+    - remove it and press the button on the pump quickly 2 times).
+    - ControlX2 is your fall back if something unexectedly goes wrong with AAPS
+    - and you need to get your pump back into a working state. It is also used
+    - for some advanced settings which are not yet implemented in AAPS
+    - (such as setting up the pump, changing cartridge, etc.).
 
 2. Download the `andy_tandem` branch from [Andy's AndroidAPS repository](https://github.com/andyrozman/AndroidAPS) and build it in Android Studio.
 
