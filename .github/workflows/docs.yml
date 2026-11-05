@@ -14,7 +14,9 @@ name: Documentation
 
 on:
   push:
-    branches: [testing]
+    # testing_v4: temporary, for the work-in-progress preview on a fork.
+    # Remove before merging upstream.
+    branches: [testing, testing_v4]
     paths:
       - "docs_src/**"
       - ".github/workflows/docs.yml"
