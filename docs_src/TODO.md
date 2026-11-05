@@ -152,7 +152,7 @@ Each one also has a `% VERIFY:` comment on its page. List them with `grep -rn "%
 
 ## Before publishing
 
-- [ ] Remove the temporary `testing_v4` branch from the push trigger in `.github/workflows/docs.yml` before merging upstream.
+- [ ] Change the push trigger in `.github/workflows/docs.yml` back from `[testing_v4]` to `[testing]` before merging upstream.
 - [ ] Work-in-progress preview on the fork (stavlor.github.io/AAPS_Tandem_Testing): enable Actions and set Pages source to GitHub Actions in the fork, then push to `testing`.
 
 - [ ] Set GitHub Pages source to **GitHub Actions** (repo Settings → Pages), so the workflow can deploy.
