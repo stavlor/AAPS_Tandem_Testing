@@ -8,6 +8,13 @@ Testing on living persons or animals is strictly forbidden. Test with a pump tha
 connected to anyone.
 :::
 
+% VERIFY: the README now says use of the driver is "at your own risk" instead of forbidding
+% testing on people. Confirm which wording applies and update this banner.
+
+The full pump documentation is on one page, laid out like the other pump pages in the
+[AAPS documentation](https://androidaps.readthedocs.io/), so it can move there when the driver is
+released: **[Tandem Mobi](CompatiblePumps/TandemMobi.md)**.
+
 ## Beta testing
 
 While this implementation is already in the Beta phase, a few things still need to be done.
@@ -23,36 +30,17 @@ The current plan is to finalize changes by the end of the year and then merge th
 official AAPS repository, ready for the Christmas release or the nearest release after it.
 
 :::{important}
-Please read this entire documentation before you start testing. It explains how the Mobi works and
-how this driver works, which will also help you decide how to set up the pump. In some cases you
-may need to restart AAPS after setting up your pump for the first time.
+Please read the whole [Tandem Mobi](CompatiblePumps/TandemMobi.md) page before you start testing.
+It explains how the Mobi works and how this driver works, which will also help you decide how to
+set up the pump. In some cases you may need to restart AAPS after setting up your pump for the
+first time.
 :::
 
 ```{toctree}
 :maxdepth: 2
-:caption: Getting started
+:caption: Pump
 
-setup/powering-on
-setup/connection
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: Using the driver
-
-using/overview-tab
-using/preferences
-using/actions
-using/data
-```
-
-```{toctree}
-:maxdepth: 2
-:caption: Reference
-
-reference/how-it-works
-reference/features
-troubleshooting
+CompatiblePumps/TandemMobi
 ```
 
 ```{toctree}

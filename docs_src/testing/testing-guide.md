@@ -9,7 +9,7 @@ strictly forbidden. Test with a pump that is not connected to anyone.
 
 1. **ControlX2.** Download the latest release from the
    [ControlX2 releases page](https://github.com/jwoglom/controlX2/releases), install it, and pair
-   it with your pump. See [Connection setup](../setup/connection.md).
+   it with your pump. See [Step 3: Pair the Mobi](#tandem-mobi-pairing).
 2. **AAPS with the Mobi driver.** Clone the `andy_tandem` branch of
    [Andy's AndroidAPS repository](https://github.com/andyrozman/AndroidAPS) and build it in
    Android Studio:
@@ -77,5 +77,5 @@ Useful strings to filter on:
 : Request messages sent to the pump, and response messages received from it.
 
 When reporting a bug, include the driver version shown on the
-[Mobi overview](../using/overview-tab.md) (enable
-[Display Driver Version](../using/preferences.md#display)).
+[Mobi pump screen](#tandem-mobi-pump-screen) (enable
+[Display Driver Version](#tandem-mobi-settings)).

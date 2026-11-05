@@ -4,7 +4,7 @@
 Commands
 --------
 capture NAME        Take a screenshot from the phone over USB (adb) and save it as
-                    docs_src/images/NAME.jpg (normalized).
+                    docs_src/images/tandem/NAME.jpg (normalized).
 demo on|off         Turn Android System UI demo mode on/off for a clean status bar
                     (fixed clock, full battery, no notification icons). Not all phones
                     support it (some Samsung builds ignore it).
@@ -29,7 +29,7 @@ try:
 except ImportError:  # pragma: no cover
     sys.exit("Pillow is required: pip install pillow")
 
-IMAGES = Path(__file__).resolve().parent.parent / "images"
+IMAGES = Path(__file__).resolve().parent.parent / "images" / "tandem"
 TARGET_WIDTH = 1080
 JPEG_QUALITY = 85
 

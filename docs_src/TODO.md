@@ -9,13 +9,13 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
 - Use the same phone for every shot, AAPS in dark theme, no personal notifications in the status bar.
 - Black out serial numbers, Bluetooth addresses and pairing data. `python docs_src/tools/screenshots.py redact FILE X Y W H` does it, or use any image editor.
 - Never include the AAPS home screen: it shows live glucose, heart rate and steps. Crop to the dialog instead.
-- Save to `docs_src/images/` with the file name below. *Refresh* items keep their current name, so the new file overwrites the old one.
-- Run `python docs_src/tools/screenshots.py normalize docs_src/images/<file>` to resize to 1080 px wide and compress.
-- On the page, point the `{figure}` at the new file and delete its `% SCREENSHOT:` comment.
+- Save to `docs_src/images/tandem/` with the file name below. *Refresh* items keep their current name, so the new file overwrites the old one.
+- Run `python docs_src/tools/screenshots.py normalize docs_src/images/tandem/<file>` to resize to 1080 px wide and compress.
+- On the page (`CompatiblePumps/TandemMobi.md`), point the image at the new file and delete its `% SCREENSHOT:` comment.
 
 ## Screenshots
 
-### Connection setup (`setup/connection.md`)
+### Setup and pairing (TandemMobi.md → Setup)
 
 - [ ] **ControlX2 pump search, no pump found** — `controlx2_pairing_stuck.png` · ControlX2
   - Where: ControlX2 → pairing wizard → pump search (stage 1 of 7).
@@ -40,7 +40,7 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: One screenshot per wizard step, numbered in order.
   - **Redact:** Serial number and Bluetooth address.
 
-### Mobi overview and bolus (`using/overview-tab.md`)
+### Pump screen and bolus (TandemMobi.md → The Mobi pump screen, Bolus progress)
 
 - [x] **Mobi overview** — `v4_overview.jpg`, replaces `overview_v2.jpg` · Retake (old UI)
 - [x] **Overview while a bolus runs** — `v4_overview_bolus.jpg` · New
@@ -54,7 +54,7 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: Section 5 visible, e.g. move the pump out of Bluetooth range until the connection drops.
   - **Redact:** Serial number and Bluetooth address.
 
-### Preferences (`using/preferences.md`)
+### Settings (TandemMobi.md → Step 4: Change Mobi settings)
 
 - [x] **Preferences, top** — `v4_preferences_top.jpg`, replaces `pref_v2_1.jpg` · Retake (old UI)
 - [x] **Preferences, bottom** — `v4_preferences_bottom.jpg`, replaces `pref_v2_2.jpg` · Retake (old UI)
@@ -63,7 +63,7 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: Use Shared Connection on, so Shared Connection Data shows.
   - **Redact:** Shared Connection Data if it shows anything other than asterisks.
 
-### Actions (`using/actions.md`)
+### Actions, cartridge and Pump Info (TandemMobi.md)
 
 - [x] **Actions, delivery suspended** — `v4_insulin_start_before.jpg` · Refresh (already v4)
 - [x] **Actions, delivery running** — `v4_insulin_stop_before.jpg` · Refresh (already v4)
@@ -115,7 +115,7 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: A preset selected, date and time showing.
 - [x] **Pump Info** — `v4_pump_info.jpg`, replaces `pump_info.jpg` · Retake (old UI)
 
-### Data (`using/data.md`)
+### Pump data (TandemMobi.md → Pump data)
 
 - [x] **Data screen** — `v4_data_main.jpg`, replaces `data_main.jpg` · Retake (old UI)
 - [ ] **Notifications** — `v4_data_notifications.jpg`, replaces `data_notifications.jpg` · Retake (old UI)
@@ -138,16 +138,16 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
 
 Each one also has a `% VERIFY:` comment on its page. List them with `grep -rn "% VERIFY" docs_src`.
 
-- [ ] `using/overview-tab.md`: Does the top command card also list queued commands?
-- [ ] `using/overview-tab.md`: How does the driver reconnect after losing the pump? The old text said auto-reconnect was coming in Phase 3.
-- [ ] `using/preferences.md`: What is the actual threshold for the Low Basal Delivery Alert? The old text said “less than 50% ??”.
-- [ ] `setup/connection.md`: Is the overview button called **Pump Pair**, and does it open the pairing wizard?
-- [ ] `using/actions.md`: What does **Debug Commands** on the Pump Info screen do, and should testers use it?
-- [ ] `using/actions.md`: Does **Stop Insulin** still refuse while a temp basal runs? It shows as usable next to Stop Temp Rate.
-- [ ] `using/data.md`: Is event support in the PumpX2 library still incomplete?
-- [ ] `reference/features.md`: Confirm the last two bullets (pump history; cartridge and cannula), added from elsewhere on the old page.
+- [ ] `TandemMobi.md` (pump screen fields): Does the top command card also list queued commands?
+- [ ] `TandemMobi.md` (pump screen fields): How does the driver reconnect after losing the pump? The old text said auto-reconnect was coming in Phase 3.
+- [ ] `TandemMobi.md` (Auto confirm Low Basal Delivery Alert): What is the actual threshold for the Low Basal Delivery Alert? The old text said “less than 50% ??”.
+- [ ] `TandemMobi.md` (Option 2: Pair with AAPS only): Is the overview button called **Pump Pair**, and does it open the pairing wizard?
+- [ ] `TandemMobi.md` (Pump Info): What does **Debug Commands** on the Pump Info screen do, and should testers use it?
+- [ ] `TandemMobi.md` (Stopping a temp basal): Does **Stop Insulin** still refuse while a temp basal runs? It shows as usable next to Stop Temp Rate.
+- [ ] `TandemMobi.md` (Events): Is event support in the PumpX2 library still incomplete?
+- [ ] `TandemMobi.md` (Pump capabilities): Confirm the last two bullets (pump history; cartridge and cannula), added from elsewhere on the old page.
 - [ ] `testing/phases.md`: Add the tags released since Phase 1.
-- [ ] `troubleshooting.md`: Does the Bluetooth off/on tip from the Phase 1 docs still apply?
+- [ ] `TandemMobi.md` (Troubleshooting): Does the Bluetooth off/on tip from the Phase 1 docs still apply?
 - [ ] `index.md, testing/testing-guide.md`: Is the “testing on people is forbidden” safety banner (from the Phase 2/3 README) still current for the beta?
 
 ## Before publishing
@@ -156,7 +156,7 @@ Each one also has a `% VERIFY:` comment on its page. List them with `grep -rn "%
 - [ ] Work-in-progress preview on the fork (stavlor.github.io/AAPS_Tandem_Testing): enable Actions and set Pages source to GitHub Actions in the fork, then push to `testing`.
 
 - [ ] Set GitHub Pages source to **GitHub Actions** (repo Settings → Pages), so the workflow can deploy.
-- [ ] Delete unused old images from `docs_src/images/` once their replacements are in (`overview_v2.jpg`, `pref_v2_1.jpg`, `pref_v2_2.jpg`, `pump_info.jpg`, `data_*.jpg` except `data_notifications.jpg`).
+- [ ] Delete the old images left directly in `docs_src/images/`. Everything still used moved to `docs_src/images/tandem/`, so what's left there is superseded and no longer referenced.
 - [ ] Import the repo on Read the Docs (readthedocs.org → Add project → AAPS_Tandem_Testing). Needs admin rights on the GitHub repo for automatic builds on push, so Andy may need to do it or add you as a maintainer.
 - [ ] On Read the Docs, set the default branch to `testing` and turn on pull request previews (Settings → Pull request builds).
 - [ ] Decide which site is the main one (GitHub Pages or Read the Docs) and point README.md's documentation link at it.

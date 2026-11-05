@@ -44,46 +44,59 @@ at the fork. To set it up, in your fork:
 
 ## Layout
 
-| Path | Contents |
-| --- | --- |
-| `docs_src/conf.py` | Sphinx configuration, including the driver version shown on the home page |
-| `docs_src/index.md` | Home page and table of contents |
-| `docs_src/setup/`, `using/`, `reference/`, `testing/` | Pages |
-| `docs_src/images/` | Screenshots |
-| `docs_src/_static/` | Custom CSS, and a script that redirects links to the old single-page docs |
-| `docs_src/SCREENSHOTS.md` | Screenshot inventory and refresh shot list (not published) |
-| `docs_src/TODO.md` | Screenshot checklist and open questions (not published) |
-| `.readthedocs.yaml` | Read the Docs build configuration |
-| `.github/workflows/docs.yml` | GitHub Pages build and deploy |
-| `docs_src/tools/screenshots.py` | Capture, redact and resize screenshots |
+The pump documentation follows the layout of the pump pages in the official
+[AndroidAPS documentation](https://github.com/openaps/AndroidAPSdocs/tree/master/docs/EN/CompatiblePumps)
+(for example `OmnipodDASH.md` and `MedtrumNano.md`), with the same relative paths, so the page and
+its images can be copied into `docs/EN/` there when the driver is released.
+
+| Path | Contents | Upstream equivalent |
+| --- | --- | --- |
+| `docs_src/CompatiblePumps/TandemMobi.md` | The pump page | `docs/EN/CompatiblePumps/TandemMobi.md` |
+| `docs_src/images/tandem/` | Its screenshots | `docs/EN/images/tandem/` |
+| `docs_src/index.md` | Home page and table of contents | (none) |
+| `docs_src/testing/`, `contributing/`, `archive/` | Pages for testers of this beta only | (none) |
+| `docs_src/conf.py` | Sphinx configuration, including the driver version shown on the home page | |
+| `docs_src/_static/` | Custom CSS, and a script that redirects links to the old docs | |
+| `docs_src/SCREENSHOTS.md` | Screenshot inventory (not published) | |
+| `docs_src/TODO.md` | Screenshot checklist and open questions (not published) | |
+| `docs_src/tools/screenshots.py` | Capture, redact and resize screenshots | |
+| `.readthedocs.yaml` | Read the Docs build configuration | |
+| `.github/workflows/docs.yml` | GitHub Pages build and deploy | |
+
+## Writing conventions
+
+Follow the conventions of the upstream pump pages:
+
+- Section order: capabilities, known constraints, hardware and software requirements, before you
+  begin, setup (numbered steps), the pump screen (fields and buttons), procedures,
+  troubleshooting, where to get help.
+- A label before every section, prefixed with `tandem-mobi-`, for example
+  `(tandem-mobi-fill-tubing)=`. Link to sections with `[text](#tandem-mobi-fill-tubing)`.
+- **Bold** for app names (**AAPS**) and for buttons, screens and settings as they appear in the app.
+- Notes and warnings as ```` ```{note} ```` / ```` ```{warning} ```` / ```` ```{important} ```` blocks.
+- One setting per `####` heading under **Step 4: Change Mobi settings**.
 
 ## Screenshots
 
-Phone screenshots go in `docs_src/images/`, named `v4_<screen>.jpg` for the current AAPS 4 UI.
-Always redact the pump serial number and Bluetooth address.
+Phone screenshots go in `docs_src/images/tandem/`, named `v4_<screen>.jpg` for the current
+AAPS 4 UI. Always redact the pump serial number and Bluetooth address.
 
-A single screenshot beside text:
+Insert them as plain Markdown images, the way the upstream pages do, placed under the step they
+illustrate (indented by three spaces inside a numbered step):
+
+```md
+1. Tap **Fill Tubing**, then **Begin Fill Tubing**.
+
+   ![Fill Tubing, step 1](../images/tandem/v4_filltubing_step1.jpg)
+```
+
+A screenshot from an older AAPS version gets the upstream "Older screenshot" note under it:
 
 ````md
-:::{figure} ../images/v4_pump_info.jpg
-:class: screenshot
-:align: right
-
-Pump Info screen.
-:::
+```{admonition} Older screenshot
+:class: note
+The screenshot above is from an earlier **AAPS** version. ...
+```
 ````
 
-A row of screenshots:
-
-````md
-:::{container} screens
-```{figure} ../images/v4_filltubing_step1.jpg
-Step 1: before you start.
-```
-```{figure} ../images/v4_filltubing_step2a.jpg
-Step 2: hold the pump button to fill.
-```
-:::
-````
-
-See `docs_src/SCREENSHOTS.md` for the list of screenshots that still need to be retaken.
+See `docs_src/TODO.md` for the screenshots that still need to be retaken.

@@ -7,7 +7,7 @@ is **out of date**. Use the rest of this documentation for the current driver.
 
 In Phase 1:
 
-- The only way to connect was a [shared connection with ControlX2](../setup/connection.md#a-shared-connection-with-controlx2).
+- The only way to connect was a [shared connection with ControlX2](#tandem-mobi-pair-controlx2).
   Pairing from AAPS arrived in Phase 2.
 - Cartridge changes, cannula fills, and starting or stopping the pump had to be done in ControlX2:
   force-stop AAPS, start ControlX2, stop the pump, change the cartridge, fill the cannula, restart
@@ -19,10 +19,10 @@ In Phase 1:
   the Data views.
 
 :::{container} screens
-```{figure} ../images/mobi_driver_overview_v1.jpg
+```{figure} ../images/tandem/mobi_driver_overview_v1.jpg
 Phase 1 T:MOBI tab.
 ```
-```{figure} ../images/mobi_driver_prefs_v1.jpg
+```{figure} ../images/tandem/mobi_driver_prefs_v1.jpg
 Phase 1 preferences.
 ```
 :::
