@@ -6,13 +6,15 @@ You can see status in project view: [on https://github.com/users/andyrozman/proj
 
 We started on Phase 1 on 17th February and it was completed on 4th April 2025.
 
-As of December 2025, we are in Phase 2/Phase 3.
+As of November 2026, the project is in thPhase 4/Phase 5 Stage..
 
 
 > [!CAUTION]
 > **IMPORTANT SAFETY NOTE**:
-> At the moment, the current integration is NOT safe for non-testing use. TESTING ON LIVING PERSONS OR ANIMALS IS STRICTLY FORBIDDEN.
-> 
+> While the project is in a decent state at the moment it should be noted that 
+this is still a testing phase and not all functionalities are fully implemented 
+and/or tested. Your use of this driver is at your own risk and you should be
+aware that it may not work as expected.
 > You can test with your pump, with it not being connected to anything.
 > Until we have reached the end of Phase 3, important security measures will not yet be fully implemented
 > (comparing treatment data with pump history records, reporting to AAPS/Loop that treatment has stopped and at what time, etc). 
