@@ -16,8 +16,31 @@ sphinx-build -W --keep-going -b html docs_src _build/html
 Open `_build/html/index.html` in a browser. For automatic rebuilds while editing, install
 `sphinx-autobuild` and run `sphinx-autobuild docs_src _build/html`.
 
-Every push to the `testing` branch that changes `docs_src` rebuilds and publishes the site with
-GitHub Actions.
+## Publishing
+
+The same sources publish to two places:
+
+GitHub Pages
+: Every push to the `testing` branch that changes `docs_src` rebuilds and publishes the site with
+  GitHub Actions (`.github/workflows/docs.yml`). Pull requests are built but not published.
+
+Read the Docs
+: Configured by `.readthedocs.yaml` at the repo root. Read the Docs rebuilds on every push to the
+  branches it tracks, and can build a preview of each pull request.
+
+Both builds fail on any Sphinx warning, so a broken link or missing image never reaches the
+published site.
+
+### Previewing on your fork
+
+The GitHub Pages workflow publishes to whichever repo runs it, so a fork gets its own preview
+site at `https://<your-user>.github.io/AAPS_Tandem_Testing/`, with "Edit on GitHub" links pointing
+at the fork. To set it up, in your fork:
+
+1. **Actions** tab: enable workflows.
+2. **Settings → Pages → Build and deployment → Source:** GitHub Actions.
+3. Push to `testing`, or run the **Documentation** workflow by hand from the Actions tab. To
+   publish from another branch, allow it in **Settings → Environments → github-pages**.
 
 ## Layout
 
@@ -29,6 +52,9 @@ GitHub Actions.
 | `docs_src/images/` | Screenshots |
 | `docs_src/_static/` | Custom CSS, and a script that redirects links to the old single-page docs |
 | `docs_src/SCREENSHOTS.md` | Screenshot inventory and refresh shot list (not published) |
+| `docs_src/TODO.md` | Screenshot checklist and open questions (not published) |
+| `.readthedocs.yaml` | Read the Docs build configuration |
+| `.github/workflows/docs.yml` | GitHub Pages build and deploy |
 | `docs_src/tools/screenshots.py` | Capture, redact and resize screenshots |
 
 ## Screenshots

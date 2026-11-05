@@ -27,12 +27,22 @@
     "currently-implemented-functionalities": "reference/features.html",
     "troubleshooting": "troubleshooting.html"
   };
-  var hash = window.location.hash.replace(/^#/, "");
-  if (!hash || !map[hash]) return;
-  // Only redirect from the site root / index page.
-  var path = window.location.pathname;
-  if (!/(\/|index\.html)$/.test(path)) return;
-  if (document.getElementById(hash)) return; // anchor exists on this page
-  var base = path.replace(/index\.html$/, "");
-  window.location.replace(base + map[hash]);
+  function redirect() {
+    var hash = window.location.hash.replace(/^#/, "");
+    if (!hash || !map[hash]) return;
+    // Only redirect from the site root / index page.
+    var path = window.location.pathname;
+    if (!/(\/|index\.html)$/.test(path)) return;
+    if (document.getElementById(hash)) return; // anchor exists on this page
+    var base = path.replace(/index\.html$/, "");
+    window.location.replace(base + map[hash]);
+  }
+  // On load (a link from elsewhere), and when only the hash changes
+  // (an old link followed while already on the home page).
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", redirect);
+  } else {
+    redirect();
+  }
+  window.addEventListener("hashchange", redirect);
 })();

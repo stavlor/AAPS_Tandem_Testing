@@ -152,6 +152,10 @@ Each one also has a `% VERIFY:` comment on its page. List them with `grep -rn "%
 
 ## Before publishing
 
+- [ ] Work-in-progress preview on the fork (stavlor.github.io/AAPS_Tandem_Testing): enable Actions and set Pages source to GitHub Actions in the fork, then push to `testing`.
+
 - [ ] Set GitHub Pages source to **GitHub Actions** (repo Settings → Pages), so the workflow can deploy.
 - [ ] Delete unused old images from `docs_src/images/` once their replacements are in (`overview_v2.jpg`, `pref_v2_1.jpg`, `pref_v2_2.jpg`, `pump_info.jpg`, `data_*.jpg` except `data_notifications.jpg`).
-- [ ] Point README.md's documentation link at the new site.
+- [ ] Import the repo on Read the Docs (readthedocs.org → Add project → AAPS_Tandem_Testing). Needs admin rights on the GitHub repo for automatic builds on push, so Andy may need to do it or add you as a maintainer.
+- [ ] On Read the Docs, set the default branch to `testing` and turn on pull request previews (Settings → Pull request builds).
+- [ ] Decide which site is the main one (GitHub Pages or Read the Docs) and point README.md's documentation link at it.

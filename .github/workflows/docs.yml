@@ -1,5 +1,17 @@
 name: Documentation
 
+# Builds the Sphinx docs in docs_src/ and publishes them to GitHub Pages of
+# whichever repo runs it: https://<owner>.github.io/<repo>/
+#   - andyrozman/AAPS_Tandem_Testing -> the main docs (same address as the old
+#     hand-written docs, which this replaces)
+#   - a fork, e.g. stavlor/AAPS_Tandem_Testing -> a work-in-progress preview
+#
+# One-time setup in each repo: Settings -> Pages -> Build and deployment ->
+# Source: "GitHub Actions". In a fork, also enable workflows on the Actions tab.
+# Pages only deploys from branches allowed in Settings -> Environments ->
+# github-pages (by default, the default branch). To publish another branch, add
+# it there, or run this workflow by hand on that branch (Actions -> Run workflow).
+
 on:
   push:
     branches: [testing]
@@ -15,9 +27,10 @@ on:
 permissions:
   contents: read
 
+# One deployment at a time; don't cancel a deploy that is already running.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -34,8 +47,23 @@ jobs:
       - name: Install Sphinx
         run: pip install -r docs_src/requirements.txt
 
+      # Gives the site's public URL (custom domain aware) for canonical links.
+      # Skipped on pull requests, which are only built, not published.
+      - name: Configure Pages
+        id: pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
       - name: Build HTML
+        env:
+          DOCS_BASEURL: ${{ steps.pages.outputs.base_url }}
+          DOCS_BRANCH: ${{ github.head_ref || github.ref_name }}
         run: sphinx-build -W --keep-going -b html docs_src _build/html
+
+      - name: Check GitHub Pages output
+        run: |
+          test -f _build/html/.nojekyll || { echo "::error::.nojekyll missing"; exit 1; }
+          test -f _build/html/index_phase_1.html || { echo "::error::legacy redirect missing"; exit 1; }
 
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
