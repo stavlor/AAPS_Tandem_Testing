@@ -36,12 +36,12 @@ Full documentation is maintained on this page: https://andyrozman.github.io/AAPS
     - for some advanced settings which are not yet implemented in AAPS
     - (such as setting up the pump, changing cartridge, etc.).
 
-2. Download the `andy_tandem` branch from [Andy's AndroidAPS repository](https://github.com/andyrozman/AndroidAPS) and build it in Android Studio.
+2. Download the `andy_tandem_dev4` branch from [Andy's AndroidAPS repository](https://github.com/andyrozman/AndroidAPS) and build it in Android Studio.
 
 ```
 git clone https://github.com/andyrozman/AndroidAPS.git
 cd AndroidAPS
-git checkout andy_tandem
+git checkout andy_tandem_dev4
 
 ```
 
@@ -57,7 +57,7 @@ git checkout andy_tandem
 You can test either from tag (when provided) or from the branch directly.
 
 ### Testing from branch
-If you feel adventerous you can try to test from the `andy_tandem` branch directly.
+If you feel adventerous you can try to test from the `andy_tandem_dev4` branch directly.
 However, keep in mind that are changed a lot, so the latest code on the branch may not be fully implemented and/or tested, which could break your AAPS install.
 If you find any problems here you can mention it in chat, but don't open issue for it.
 

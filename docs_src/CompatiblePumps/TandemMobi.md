@@ -34,7 +34,7 @@ The Tandem Mobi driver is in **beta testing** and is not yet part of an official
 
 * **A Tandem Mobi pump.**
 * **A Qi-compatible wireless charger.** You need one to power on and to pair the pump. Any Qi charger works, not only the Tandem charging pad. MagSafe chargers also work, but keep the cartridge area of the pump away from the magnets to avoid damaging the piston.
-* **AAPS built from the `andy_tandem` branch** of [Andy's AndroidAPS repository](https://github.com/andyrozman/AndroidAPS) and installed, see the [Testing guide](../testing/testing-guide.md).
+* **AAPS built from the `andy_tandem_dev4` branch** of [Andy's AndroidAPS repository](https://github.com/andyrozman/AndroidAPS) and installed, see the [Testing guide](../testing/testing-guide.md).
 * **A compatible Android phone** with a Bluetooth Low Energy (BLE) connection.
 * **[ControlX2](https://github.com/jwoglom/controlX2)** (recommended), installed on the same phone. ControlX2 is a small open-source Android app by @jwoglom, one of the co-authors of this integration. It can monitor the pump, deliver boluses and temp basals, and change (nearly) all pump settings, including Mobi-specific commands such as Change Cartridge and Fill Cannula. It is your fallback if something goes wrong with **AAPS**.
 

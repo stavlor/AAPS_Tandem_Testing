@@ -10,14 +10,14 @@ strictly forbidden. Test with a pump that is not connected to anyone.
 1. **ControlX2.** Download the latest release from the
    [ControlX2 releases page](https://github.com/jwoglom/controlX2/releases), install it, and pair
    it with your pump. See [Setup](#tandem-mobi-setup).
-2. **AAPS with the Mobi driver.** Clone the `andy_tandem` branch of
+2. **AAPS with the Mobi driver.** Clone the `andy_tandem_dev4` branch of
    [Andy's AndroidAPS repository](https://github.com/andyrozman/AndroidAPS) and build it in
    Android Studio:
 
    ```bash
    git clone https://github.com/andyrozman/AndroidAPS.git
    cd AndroidAPS
-   git checkout andy_tandem
+   git checkout andy_tandem_dev4
    ```
 
 ## Prepare AAPS (one-time)
@@ -57,7 +57,7 @@ The branch name can be anything; the tag name must match exactly. See
 
 ### Testing from the branch
 
-If you feel adventurous you can test the `andy_tandem` branch directly. It changes a lot, so the
+If you feel adventurous you can test the `andy_tandem_dev4` branch directly. It changes a lot, so the
 latest code may not be fully implemented or tested and could break your AAPS install. Mention any
 problems in Discord, but don't open issues for them.
 
