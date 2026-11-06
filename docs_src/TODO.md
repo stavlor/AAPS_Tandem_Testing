@@ -40,7 +40,7 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: One screenshot per wizard step, numbered in order.
   - **Redact:** Serial number and Bluetooth address.
 
-### Pump screen and bolus (TandemMobi.md → The Mobi pump screen, Bolus progress)
+### Pump Screen and bolus (TandemMobi.md → Pump Screen; Mobi Specific Architecture → Bolus progress)
 
 - [x] **Mobi overview** — `v4_overview.jpg`, replaces `overview_v2.jpg` · Retake (old UI)
 - [x] **Overview while a bolus runs** — `v4_overview_bolus.jpg` · New
@@ -54,7 +54,7 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: Section 5 visible, e.g. move the pump out of Bluetooth range until the connection drops.
   - **Redact:** Serial number and Bluetooth address.
 
-### Settings (TandemMobi.md → Step 4: Change Mobi settings)
+### Settings (TandemMobi.md → Setup → Mobi settings)
 
 - [x] **Preferences, top** — `v4_preferences_top.jpg`, replaces `pref_v2_1.jpg` · Retake (old UI)
 - [x] **Preferences, bottom** — `v4_preferences_bottom.jpg`, replaces `pref_v2_2.jpg` · Retake (old UI)
@@ -63,7 +63,7 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: Use Shared Connection on, so Shared Connection Data shows.
   - **Redact:** Shared Connection Data if it shows anything other than asterisks.
 
-### Actions, cartridge and Pump Info (TandemMobi.md)
+### Actions (TandemMobi.md → Mobi Specific UI → Actions)
 
 - [x] **Actions, delivery suspended** — `v4_insulin_start_before.jpg` · Refresh (already v4)
 - [x] **Actions, delivery running** — `v4_insulin_stop_before.jpg` · Refresh (already v4)
@@ -115,7 +115,7 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: A preset selected, date and time showing.
 - [x] **Pump Info** — `v4_pump_info.jpg`, replaces `pump_info.jpg` · Retake (old UI)
 
-### Pump data (TandemMobi.md → Pump data)
+### Data (TandemMobi.md → Mobi Specific UI → Data)
 
 - [x] **Data screen** — `v4_data_main.jpg`, replaces `data_main.jpg` · Retake (old UI)
 - [ ] **Notifications** — `v4_data_notifications.jpg`, replaces `data_notifications.jpg` · Retake (old UI)
@@ -138,13 +138,13 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
 
 Each one also has a `% VERIFY:` comment on its page. List them with `grep -rn "% VERIFY" docs_src`.
 
-- [ ] `TandemMobi.md` (pump screen fields): Does the top command card also list queued commands?
-- [ ] `TandemMobi.md` (pump screen fields): How does the driver reconnect after losing the pump? The old text said auto-reconnect was coming in Phase 3.
-- [ ] `TandemMobi.md` (Auto confirm Low Basal Delivery Alert): What is the actual threshold for the Low Basal Delivery Alert? The old text said “less than 50% ??”.
-- [ ] `TandemMobi.md` (Option 2: Pair with AAPS only): Is the overview button called **Pump Pair**, and does it open the pairing wizard?
-- [ ] `TandemMobi.md` (Pump Info): What does **Debug Commands** on the Pump Info screen do, and should testers use it?
-- [ ] `TandemMobi.md` (Stopping a temp basal): Does **Stop Insulin** still refuse while a temp basal runs? It shows as usable next to Stop Temp Rate.
-- [ ] `TandemMobi.md` (Events): Is event support in the PumpX2 library still incomplete?
+- [ ] `TandemMobi.md` (Pump Screen → Fields): Does the top command card also list queued commands?
+- [ ] `TandemMobi.md` (Pump Screen → Fields): How does the driver reconnect after losing the pump? The old text said auto-reconnect was coming in Phase 3.
+- [ ] `TandemMobi.md` (Setup → Mobi settings → Auto confirm Low Basal Delivery Alert): What is the actual threshold for the Low Basal Delivery Alert? The old text said “less than 50% ??”.
+- [ ] `TandemMobi.md` (Setup → B) Pairing with AAPS only): Is the overview button called **Pump Pair**, and does it open the pairing wizard?
+- [ ] `TandemMobi.md` (Mobi Specific UI → Pump Info): What does **Debug Commands** on the Pump Info screen do, and should testers use it?
+- [ ] `TandemMobi.md` (Mobi Specific UI → Stopping a temp basal): Does **Stop Insulin** still refuse while a temp basal runs? It shows as usable next to Stop Temp Rate.
+- [ ] `TandemMobi.md` (Mobi Specific Architecture → Events): Is event support in the PumpX2 library still incomplete?
 - [ ] `TandemMobi.md` (Pump capabilities): Confirm the last two bullets (pump history; cartridge and cannula), added from elsewhere on the old page.
 - [ ] `testing/phases.md`: Add the tags released since Phase 1.
 - [ ] `TandemMobi.md` (Troubleshooting): Does the Bluetooth off/on tip from the Phase 1 docs still apply?

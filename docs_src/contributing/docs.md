@@ -67,14 +67,18 @@ its images can be copied into `docs/EN/` there when the driver is released.
 
 Follow the conventions of the upstream pump pages:
 
-- Section order: capabilities, known constraints, hardware and software requirements, before you
-  begin, setup (numbered steps), the pump screen (fields and buttons), procedures,
-  troubleshooting, where to get help.
+- Top-level sections, in order: **Pump capabilities with AAPS**, **Hardware and software
+  requirements**, **Before you begin**, **Setup** (connection options A and B, then the settings),
+  **Mobi Specific Architecture** (how the driver and pump work: limitations, startup, notifications,
+  events, history, bolus), **Pump Screen** (fields and buttons), **Mobi Specific UI** (Actions,
+  Data), **Troubleshooting**, **Where to get help**.
+- Explain how something works under Mobi Specific Architecture, and how to use its screen under
+  Mobi Specific UI, and link the two.
 - A label before every section, prefixed with `tandem-mobi-`, for example
   `(tandem-mobi-fill-tubing)=`. Link to sections with `[text](#tandem-mobi-fill-tubing)`.
 - **Bold** for app names (**AAPS**) and for buttons, screens and settings as they appear in the app.
 - Notes and warnings as ```` ```{note} ```` / ```` ```{warning} ```` / ```` ```{important} ```` blocks.
-- One setting per `####` heading under **Step 4: Change Mobi settings**.
+- One setting per `####` heading under **Setup → Mobi settings**.
 
 ## Screenshots
 
