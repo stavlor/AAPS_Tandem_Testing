@@ -84,3 +84,15 @@
   border-radius: 10px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
+
+/* Todo page: checklist items show a checkbox instead of a bullet. */
+.rst-content ul.contains-task-list > li.task-list-item {
+  list-style: none !important;
+}
+.rst-content ul.contains-task-list {
+  margin-left: 0 !important;
+}
+.rst-content li.task-list-item > input.task-list-item-checkbox {
+  margin: 0 6px 0 -18px;
+  vertical-align: middle;
+}

@@ -35,7 +35,7 @@ Pages mark each outdated image with a `% SCREENSHOT:` comment next to it, so
 | 5b | `v4_overview_pair_button.jpg` | TandemMobi: pump screen | Overview with the Pump Pair button visible (Hide Pump Pair Button off) | — | ➕ |
 | 6 | `v4_pairing_wizard_1.jpg` … `_n.jpg` | TandemMobi: setup | Each step of the AAPS pairing wizard (Mobi overview → Pump Pair) | — | ➕ |
 | 7 | `v4_data_main.jpg` | TandemMobi: pump data | Data screen with the three entries | `data_main.jpg` | ✅ |
-| 8 | `v4_data_notifications.jpg` | TandemMobi: pump data | Notifications with at least one alert and one malfunction | `data_notifications.jpg` | 🔁 |
+| 8 | `v4_data_notifications.jpg` | TandemMobi: pump data | Notifications with at least one alert and one malfunction | `data_notifications.jpg` | ✅ |
 | 9 | `v4_data_events.jpg` | TandemMobi: pump data | Events list | `data_events.jpg` | ✅ |
 | 10 | `v4_data_history.jpg` | TandemMobi: pump data | Pump History with Group and Time Range filters | `data_pump_history.jpg` | ✅ |
 | 11 | `v4_data_history_details.jpg` | TandemMobi: pump data | History Log Details dialog | `data_pump_history_details.jpg` | ✅ |

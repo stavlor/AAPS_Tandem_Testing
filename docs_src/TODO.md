@@ -1,8 +1,11 @@
-# Documentation TODO
+(todo)=
+# Todo
 
-Working list for the Sphinx docs. Not published (excluded in `conf.py`).
+Working list for these docs: screenshots still to capture, open questions about the driver, and
+the remaining steps before publishing. The source is `docs_src/TODO.md`; tick items there as you
+go.
 
-**Screenshots: 16 / 43 done** (as of November 5, 2026). Tick items as you go.
+**Screenshots: 17 / 43 done** (as of November 6, 2026).
 
 ## How to capture
 
@@ -15,7 +18,9 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
 
 ## Screenshots
 
-### Setup and pairing (TandemMobi.md → Setup)
+### Setup and pairing
+
+Page section: [Setup](#tandem-mobi-setup)
 
 - [ ] **ControlX2 pump search, no pump found** — `controlx2_pairing_stuck.png` · ControlX2
   - Where: ControlX2 → pairing wizard → pump search (stage 1 of 7).
@@ -40,7 +45,9 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: One screenshot per wizard step, numbered in order.
   - **Redact:** Serial number and Bluetooth address.
 
-### Pump Screen and bolus (TandemMobi.md → Pump Screen; Mobi Specific Architecture → Bolus progress)
+### Pump Screen and bolus
+
+Page sections: [Pump Screen](#tandem-mobi-pump-screen), [Bolus progress](#tandem-mobi-bolus-progress)
 
 - [x] **Mobi overview** — `v4_overview.jpg`, replaces `overview_v2.jpg` · Retake (old UI)
 - [x] **Overview while a bolus runs** — `v4_overview_bolus.jpg` · New
@@ -54,7 +61,9 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: Section 5 visible, e.g. move the pump out of Bluetooth range until the connection drops.
   - **Redact:** Serial number and Bluetooth address.
 
-### Settings (TandemMobi.md → Setup → Mobi settings)
+### Mobi settings
+
+Page section: [Mobi settings](#tandem-mobi-settings)
 
 - [x] **Preferences, top** — `v4_preferences_top.jpg`, replaces `pref_v2_1.jpg` · Retake (old UI)
 - [x] **Preferences, bottom** — `v4_preferences_bottom.jpg`, replaces `pref_v2_2.jpg` · Retake (old UI)
@@ -63,7 +72,9 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: Use Shared Connection on, so Shared Connection Data shows.
   - **Redact:** Shared Connection Data if it shows anything other than asterisks.
 
-### Actions (TandemMobi.md → Mobi Specific UI → Actions)
+### Actions
+
+Page section: [Actions](#tandem-mobi-actions)
 
 - [x] **Actions, delivery suspended** — `v4_insulin_start_before.jpg` · Refresh (already v4)
 - [x] **Actions, delivery running** — `v4_insulin_stop_before.jpg` · Refresh (already v4)
@@ -115,17 +126,19 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
   - Set up: A preset selected, date and time showing.
 - [x] **Pump Info** — `v4_pump_info.jpg`, replaces `pump_info.jpg` · Retake (old UI)
 
-### Data (TandemMobi.md → Mobi Specific UI → Data)
+### Data
+
+Page section: [Data](#tandem-mobi-pump-data)
 
 - [x] **Data screen** — `v4_data_main.jpg`, replaces `data_main.jpg` · Retake (old UI)
-- [ ] **Notifications** — `v4_data_notifications.jpg`, replaces `data_notifications.jpg` · Retake (old UI)
-  - Where: Data → Notifications.
-  - Set up: At least one alert and one malfunction listed, e.g. a low insulin alert.
+- [x] **Notifications** — `v4_data_notifications.jpg`, replaces `data_notifications.jpg` · Retake (old UI)
 - [x] **Events** — `v4_data_events.jpg`, replaces `data_events.jpg` · Retake (old UI)
 - [x] **Pump History list** — `v4_data_history.jpg`, replaces `data_pump_history.jpg` · Retake (old UI)
 - [x] **History Log Details** — `v4_data_history_details.jpg`, replaces `data_pump_history_details.jpg` · Retake (old UI)
 
-### Archive (Phase 1) (`archive/phase-1.md`)
+### Archive (Phase 1)
+
+Page: [Phase 1 documentation](archive/phase-1.md)
 
 - [ ] **Phase 1 T:MOBI tab** — `mobi_driver_overview_v1.jpg` · Keep (historical)
   - Where: Historical image.
@@ -138,17 +151,17 @@ Working list for the Sphinx docs. Not published (excluded in `conf.py`).
 
 Each one also has a `% VERIFY:` comment on its page. List them with `grep -rn "% VERIFY" docs_src`.
 
-- [ ] `TandemMobi.md` (Pump Screen → Fields): Does the top command card also list queued commands?
-- [ ] `TandemMobi.md` (Pump Screen → Fields): How does the driver reconnect after losing the pump? The old text said auto-reconnect was coming in Phase 3.
-- [ ] `TandemMobi.md` (Setup → Mobi settings → Auto confirm Low Basal Delivery Alert): What is the actual threshold for the Low Basal Delivery Alert? The old text said “less than 50% ??”.
-- [ ] `TandemMobi.md` (Setup → B) Pairing with AAPS only): Is the overview button called **Pump Pair**, and does it open the pairing wizard?
-- [ ] `TandemMobi.md` (Mobi Specific UI → Pump Info): What does **Debug Commands** on the Pump Info screen do, and should testers use it?
-- [ ] `TandemMobi.md` (Mobi Specific UI → Stopping a temp basal): Does **Stop Insulin** still refuse while a temp basal runs? It shows as usable next to Stop Temp Rate.
-- [ ] `TandemMobi.md` (Mobi Specific Architecture → Events): Is event support in the PumpX2 library still incomplete?
-- [ ] `TandemMobi.md` (Pump capabilities): Confirm the last two bullets (pump history; cartridge and cannula), added from elsewhere on the old page.
-- [ ] `testing/phases.md`: Add the tags released since Phase 1.
-- [ ] `TandemMobi.md` (Troubleshooting): Does the Bluetooth off/on tip from the Phase 1 docs still apply?
-- [ ] `index.md, testing/testing-guide.md`: Is the “testing on people is forbidden” safety banner (from the Phase 2/3 README) still current for the beta?
+- [ ] [Pump Screen fields](#tandem-mobi-pump-screen): Does the top command card also list queued commands?
+- [ ] [Pump Screen fields](#tandem-mobi-pump-screen): How does the driver reconnect after losing the pump? The old text said auto-reconnect was coming in Phase 3.
+- [ ] [Mobi settings](#tandem-mobi-settings), Auto confirm Low Basal Delivery Alert: What is the actual threshold for the Low Basal Delivery Alert? The old text said “less than 50% ??”.
+- [ ] [B) Pairing with AAPS only](#tandem-mobi-pair-aaps): Is the overview button called **Pump Pair**, and does it open the pairing wizard?
+- [ ] [Pump Info](#tandem-mobi-pump-info): What does **Debug Commands** on the Pump Info screen do, and should testers use it?
+- [ ] [Stopping a temp basal](#tandem-mobi-stop-temp-basal): Does **Stop Insulin** still refuse while a temp basal runs? It shows as usable next to Stop Temp Rate.
+- [ ] [Events](#tandem-mobi-events): Is event support in the PumpX2 library still incomplete?
+- [ ] [Pump capabilities with AAPS](#tandem-mobi-capabilities): Confirm the last two bullets (pump history; cartridge and cannula), added from elsewhere on the old page.
+- [ ] [Development phases](testing/phases.md): Add the tags released since Phase 1.
+- [ ] [Troubleshooting](#tandem-mobi-troubleshooting): Does the Bluetooth off/on tip from the Phase 1 docs still apply?
+- [ ] [Home page](index.md) and [Testing guide](testing/testing-guide.md): Is the “testing on people is forbidden” safety banner (from the Phase 2/3 README) still current for the beta?
 
 ## Before publishing
 

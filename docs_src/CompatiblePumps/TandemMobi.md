@@ -534,14 +534,12 @@ Tap **Data** on the Pump Screen, or tap one of the **NOTIFICATIONS**, **EVENTS**
 
 This view shows all notifications currently active on the pump. For what the different types mean, see [Pump notifications](#tandem-mobi-notifications-explained).
 
-![Notifications with an alert and a malfunction](../images/tandem/data_notifications.jpg)
+![The Notifications view with a MIN_BASAL_ALERT2 alert](../images/tandem/v4_data_notifications.jpg)
 
-```{admonition} Older screenshot
-:class: note
-The screenshot above is from an earlier **AAPS** version. In **AAPS** 4 the screen looks different, but confirming notifications works the same way.
-```
+Each notification shows its type and code (for example **Alert: MIN_BASAL_ALERT2**) and a short description of what it means.
 
-% SCREENSHOT: data_notifications.jpg is pre-Compose UI (SCREENSHOTS.md: data-notif).
+% SCREENSHOT: optional extra shot with an alert and a malfunction listed together
+% (SCREENSHOTS.md: data-notif).
 
 - **Tap a notification to confirm it.** It is dismissed on the pump and disappears from the list, and the pump stops beeping or vibrating about it.
 - Most alerts and alarms come with a malfunction. Malfunctions can't be confirmed, but they disappear when the related alert or alarm is confirmed.

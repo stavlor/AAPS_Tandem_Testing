@@ -39,7 +39,7 @@ extensions = [
 
 source_suffix = {".md": "markdown"}
 root_doc = "index"
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "SCREENSHOTS.md", "TODO.md", "README.md"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "SCREENSHOTS.md", "README.md"]
 
 # Allow :ref:`page:Section title` cross-references without explicit labels.
 autosectionlabel_prefix_document = True
@@ -51,6 +51,7 @@ myst_enable_extensions = [
     "attrs_inline",  # {width=...} on inline images
     "attrs_block",
     "substitution",
+    "tasklist",      # - [ ] / - [x] checklists (Todo page)
 ]
 myst_heading_anchors = 3
 

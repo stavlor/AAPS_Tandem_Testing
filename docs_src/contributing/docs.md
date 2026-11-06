@@ -58,7 +58,7 @@ its images can be copied into `docs/EN/` there when the driver is released.
 | `docs_src/conf.py` | Sphinx configuration, including the driver version shown on the home page | |
 | `docs_src/_static/` | Custom CSS, and a script that redirects links to the old docs | |
 | `docs_src/SCREENSHOTS.md` | Screenshot inventory (not published) | |
-| `docs_src/TODO.md` | Screenshot checklist and open questions (not published) | |
+| `docs_src/TODO.md` | The **Todo** page: screenshot checklist, open questions, steps before publishing | |
 | `docs_src/tools/screenshots.py` | Capture, redact and resize screenshots | |
 | `.readthedocs.yaml` | Read the Docs build configuration | |
 | `.github/workflows/docs.yml` | GitHub Pages build and deploy | |
