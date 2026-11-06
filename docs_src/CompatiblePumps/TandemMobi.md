@@ -611,7 +611,7 @@ If something crashes, or you are asked for logs, see [Collecting logs](../testin
 All of the development work for the Tandem Mobi driver is done by the community on a **volunteer** basis; please keep this in mind and use the following guidelines before requesting assistance:
 
 - **Level 0:** Read the relevant section of this documentation to make sure you understand how the functionality you are having trouble with is supposed to work.
-- **Level 1:** If you still have a problem you can't solve with this page, post in the **#t_mobi-test** channel on **Discord**, so we can discuss whether it is a bug or how the implementation works.
+- **Level 1:** If you still have a problem you can't solve with this page, post in the [**#t_mobi-test**](https://discord.com/channels/629952586895851530/1341876855543824426) channel on the [**We Are Not Waiting** Discord](https://discord.gg/4fQUWHZ4Mw), so we can discuss whether it is a bug or how the implementation works. Join the server with the invite link first: the channel link only works once you are a member.
 - **Level 2:** Search the [AAPS_Tandem_Testing issues](https://github.com/andyrozman/AAPS_Tandem_Testing/issues) to see whether your problem has already been reported. If it has, add your information there. If it hasn't, and it was confirmed as a bug on Discord, open a new issue with your [log files](../testing/testing-guide.md#collecting-logs).
 - **Be patient:** most of our community are good-natured volunteers, and solving issues often takes time and patience from both users and developers.
 
