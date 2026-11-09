@@ -2,7 +2,7 @@
 #
 # Build locally:
 #   pip install -r docs_src/requirements.txt
-#   sphinx-build -b html docs_src _build/html
+#   sphinx-build -W --keep-going -b html docs_src _build/html
 #
 # Published two ways, both from this same configuration:
 #   - GitHub Pages, by .github/workflows/docs.yml
@@ -39,7 +39,7 @@ extensions = [
 
 source_suffix = {".md": "markdown"}
 root_doc = "index"
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "SCREENSHOTS.md", "README.md"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "README.md"]
 
 # Allow :ref:`page:Section title` cross-references without explicit labels.
 autosectionlabel_prefix_document = True
@@ -60,7 +60,9 @@ myst_substitutions = {
     "version": version,
 }
 
-# Treat broken internal references as errors during CI (sphinx-build -W).
+# Broken links and missing images already fail the build through -W (CI and
+# Read the Docs). nitpicky would also flag unresolved Python/C references,
+# which these docs don't use.
 nitpicky = False
 
 # -- HTML output -------------------------------------------------------------

@@ -23,6 +23,8 @@ The same sources publish to two places:
 GitHub Pages
 : Every push to the `testing` branch that changes `docs_src` rebuilds and publishes the site with
   GitHub Actions (`.github/workflows/docs.yml`). Pull requests are built but not published.
+  While the docs are previewed on a fork, the workflow builds `testing_v4` instead; see the
+  [Todo](#todo) page.
 
 Read the Docs
 : Configured by `.readthedocs.yaml` at the repo root. Read the Docs rebuilds on every push to the
@@ -39,8 +41,9 @@ at the fork. To set it up, in your fork:
 
 1. **Actions** tab: enable workflows.
 2. **Settings → Pages → Build and deployment → Source:** GitHub Actions.
-3. Push to `testing`, or run the **Documentation** workflow by hand from the Actions tab. To
-   publish from another branch, allow it in **Settings → Environments → github-pages**.
+3. Push to the branch the workflow builds (`testing`, or `testing_v4` for now), or run the
+   **Documentation** workflow by hand from the Actions tab. To publish from another branch, allow
+   it in **Settings → Environments → github-pages**.
 
 ## Layout
 
@@ -57,8 +60,7 @@ its images can be copied into `docs/EN/` there when the driver is released.
 | `docs_src/testing/`, `contributing/`, `archive/` | Pages for testers of this beta only | (none) |
 | `docs_src/conf.py` | Sphinx configuration, including the driver version shown on the home page | |
 | `docs_src/_static/` | Custom CSS, and a script that redirects links to the old docs | |
-| `docs_src/SCREENSHOTS.md` | Screenshot inventory (not published) | |
-| `docs_src/TODO.md` | The **Todo** page: screenshot checklist, open questions, steps before publishing | |
+| `docs_src/TODO.md` | The **Todo** page: screenshot shot list and how to capture, open questions, steps before publishing | |
 | `docs_src/tools/screenshots.py` | Capture, redact and resize screenshots | |
 | `.readthedocs.yaml` | Read the Docs build configuration | |
 | `.github/workflows/docs.yml` | GitHub Pages build and deploy | |
@@ -79,6 +81,9 @@ Follow the conventions of the upstream pump pages:
 - **Bold** for app names (**AAPS**) and for buttons, screens and settings as they appear in the app.
 - Notes and warnings as ```` ```{note} ```` / ```` ```{warning} ```` / ```` ```{important} ```` blocks.
 - One setting per `####` heading under **Setup → Mobi settings**.
+- Mark anything not yet confirmed with a `% VERIFY:` comment, and an outdated or missing
+  screenshot with a `% SCREENSHOT:` comment. Add a matching item to `docs_src/TODO.md`. These
+  comments are not published.
 
 ## Screenshots
 
@@ -103,4 +108,5 @@ The screenshot above is from an earlier **AAPS** version. ...
 ```
 ````
 
-See `docs_src/TODO.md` for the screenshots that still need to be retaken.
+See the [Todo](#todo) page for how to capture and redact screenshots, and which ones still need
+to be taken.

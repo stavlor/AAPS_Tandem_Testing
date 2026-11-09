@@ -4,7 +4,7 @@
 These instructions are for configuring the **Tandem Mobi** insulin pump with **AAPS**.
 
 ```{warning}
-The Tandem Mobi driver is in **beta testing** and is not yet part of an official **AAPS** release. Not all functionality is fully implemented or tested. Read this whole page before you start, and report problems as described in [Where to get help](#tandem-mobi-where-to-get-help).
+The Tandem Mobi driver is in **beta testing** and is not yet part of an official **AAPS** release. Not all functionality is fully implemented or tested, and it may not work as expected. **Use it at your own risk.** Read this whole page before you start, and report problems as described in [Where to get help](#tandem-mobi-where-to-get-help).
 ```
 
 ```{contents} Table of contents
@@ -26,9 +26,6 @@ The Tandem Mobi driver is in **beta testing** and is not yet part of an official
 * Pairing directly from **AAPS**, or through a shared connection with ControlX2.
 * Time zone and daylight saving time changes (not tested yet).
 
-% VERIFY: confirm the last two bullets of the old feature list (pump history; cartridge and
-% cannula) against the current driver before publishing.
-
 (tandem-mobi-hardware-software-requirements)=
 ## Hardware and software requirements
 
@@ -45,7 +42,7 @@ The Tandem Mobi driver is in **beta testing** and is not yet part of an official
 
 The Mobi has no screen, so if something goes wrong you have limited options to fix the pump from within **AAPS**. Do not start without:
 * a **wireless charger** within reach, in case you need to re-pair, switch phones, or switch from **AAPS** to the official Mobi app, and
-* **ControlX2** or the official **Tandem Mobi** app (iPhone; an Android version was expected by the end of Q1 2026) to recover the pump if **AAPS** can't.
+* **ControlX2** or the official **Tandem Mobi** app (iPhone, and Android in the US since March 2026) to recover the pump if **AAPS** can't.
 
 ### Only one app can be connected to the pump at a time
 
@@ -113,12 +110,23 @@ Both options need the pump in [pairing mode](#tandem-mobi-pairing-mode).
 Pairing in **AAPS** is a newer addition to the Mobi driver, and is not yet as reliable as pairing through ControlX2.
 ```
 
-1. Open the [Pump Screen](#tandem-mobi-pump-screen) and tap **Pump Pair**. If the button isn't there, open the [Mobi settings](#tandem-mobi-settings) and turn off **Use Shared Connection** and **Hide Pump Pair Button in Overview**.
-2. Follow the wizard, and put the pump in [pairing mode](#tandem-mobi-pairing-mode) when asked. If the pump isn't found, see [If the pump can't be found](#tandem-mobi-pump-not-found).
+You need the pump's 6-digit pairing PIN, printed inside the cartridge bay of the pump.
 
-% VERIFY: the steps above are inferred from the "Hide Pump Pair Button in Overview" setting.
-% Confirm the button name and that it opens the pairing wizard.
-% SCREENSHOT: add the pump screen with Pump Pair and each wizard step (SCREENSHOTS.md: aaps-wizard).
+1. Open the **Tandem Pump Connection Wizard** in either of two ways:
+   - On the [Pump Screen](#tandem-mobi-pump-screen), tap **Pair Pump**.
+   - In the [Mobi settings](#tandem-mobi-settings), tap **Tandem Pump Connection Wizard**.
+
+   Both only appear while **Use Shared Connection** is off. **Pair Pump** is also hidden while **Hide Pump Pair Button in Overview** is on.
+2. Tap **Begin Pairing** and select your pump from the device list. If it isn't listed, put it in [pairing mode](#tandem-mobi-pairing-mode). If it still isn't found, see [If the pump can't be found](#tandem-mobi-pump-not-found).
+3. Enter the 6-digit PIN and tap **Connect**.
+4. When the wizard asks, take the pump off the charger and press the pump button twice, as for [pairing mode](#tandem-mobi-pairing-mode).
+5. Wait while the wizard connects and reads the pump information. When it shows **Successfully Connected!**, the pump is paired. The same screen shows which features are supported (closed loop, or open loop only).
+
+If the PIN is rejected, tap **Edit PIN**, check it, and tap **Retry**. If the connection times out, make sure the pump is nearby and Bluetooth is on, then tap **Retry**, or **Cancel and Rescan** to start the search again.
+
+% VERIFY: steps 2-5 are written from the wizard's text in the driver source (andy_tandem_dev4,
+% Nov 2026). Check the order against a real pairing when the wizard screenshots are taken.
+% SCREENSHOT: add the pump screen with Pair Pump and each wizard step (TODO.md: Setup and pairing).
 
 ```{raw} html
 <div class="video">
@@ -164,7 +172,7 @@ If this happens and you are sure the Mobi is in pairing mode, open the Android *
 ![ControlX2 permissions](../images/tandem/controlx2_appinfo_3.png)
 
 % SCREENSHOT: controlx2_appinfo_3.png shows Location under "Not allowed". Retake with every
-% permission allowed (SCREENSHOTS.md: cx2-appinfo-3).
+% permission allowed (TODO.md: Setup and pairing).
 
 Some phones need the **Location** permission before they can find all Bluetooth devices. If you can't find your pump, tap **Location** and allow it either "while using the app" or "all the time".
 
@@ -179,11 +187,11 @@ Tap the gear icon in the top-right corner of the [Pump Screen](#tandem-mobi-pump
 
 #### Use Shared Connection
 
-Whether **AAPS** uses pairing data from ControlX2. When enabled, fill in **Shared Connection Data**. When disabled, pair from **AAPS** with the **Pump Pair** button on the Pump Screen. See [A) Shared connection with ControlX2](#tandem-mobi-pair-controlx2).
+Whether **AAPS** uses pairing data from ControlX2. When enabled, paste the pairing data into **Shared Connection Data**; see [A) Shared connection with ControlX2](#tandem-mobi-pair-controlx2). When disabled, **Tandem Pump Connection Wizard** appears here instead, and you pair from **AAPS**; see [B) Pairing with AAPS only](#tandem-mobi-pair-aaps).
 
 #### Hide Pump Pair Button in Overview
 
-Pairing is only done once, so after the pump is paired you can hide the **Pump Pair** button on the Pump Screen.
+Pairing is only done once, so after the pump is paired you can hide the **Pair Pump** button on the Pump Screen.
 
 #### Max Bolus on Pump (U)
 
@@ -223,9 +231,10 @@ The pump button can deliver quick boluses. This sets the amount added per button
 
 For example, with 0.5 U: hold the pump button until it vibrates or beeps, then press it four times for a 2 U bolus. The pump confirms the amount with the same number of beeps or vibrations; hold the button again to confirm the bolus.
 
+(tandem-mobi-first-cartridge)=
 ### Insert a cartridge and start insulin
 
-With the pump connected and set up, prepare it for use from the [Actions](#tandem-mobi-actions) screen:
+With the pump connected and set up, prepare it for use from the [Actions](#tandem-mobi-actions) screen. First confirm any active [notifications](#tandem-mobi-notifications): a new pump reports that insulin delivery is suspended, and the Mobi rejects cartridge commands until you confirm it.
 
 1. [Change the cartridge](#tandem-mobi-change-cartridge).
 2. [Fill the tubing](#tandem-mobi-fill-tubing).
@@ -315,6 +324,10 @@ Pump history is read every 5 minutes, together with the pump status check.
 
 History is not fully parsed: **AAPS** shows the fields the PumpX2 library recognizes, with some parsing of a few known fields. History is for information and is not used by the driver, but it is useful for testing: it is a durable log, kept by the pump, of the operations performed, which you can check against the actions **AAPS** logged. You can see it in the [Pump History](#tandem-mobi-pump-history) view.
 
+% VERIFY: Phase 4 is described as using pump history for safety checks (comparing treatments
+% with history, reporting when delivery stopped). If that has landed, "not used by the driver"
+% above is out of date.
+
 (tandem-mobi-bolus-progress)=
 ### Bolus progress
 
@@ -327,7 +340,7 @@ While a bolus runs, a progress dialog shows the amount being delivered and a **S
 (tandem-mobi-pump-screen)=
 ## Pump Screen
 
-The Pump Screen shows the state of the pump and gives access to everything you do with it. The gear icon in the top-right corner opens the [Mobi settings](#tandem-mobi-settings).
+The Pump Screen is the **Tandem Mobi** tab in **AAPS**. It shows the state of the pump and gives access to everything you do with it. The gear icon in the top-right corner opens the [Mobi settings](#tandem-mobi-settings).
 
 ![The Pump Screen with a temp basal running](../images/tandem/v4_overview.jpg)
 
@@ -357,6 +370,8 @@ While a command is running, a card at the top of the screen shows it, and **BT S
 % command card lists queued commands.
 % VERIFY: the old text said auto-reconnect would be added in Phase 3. Confirm the current
 % reconnect behaviour and update "Driver errors" above.
+% VERIFY: tag notes for v0.8.14.10 mention a banner when the pump can't be contacted and a
+% warning when it is suspended. Document them here if they are still shown.
 
 ```{important}
 The **NOTIFICATIONS** label matters most when you set up a pump for the first time or change the cartridge. The Mobi rejects **Change Cartridge** and **Fill Tubing** until you have confirmed the notifications about insulin delivery being suspended.
@@ -367,7 +382,7 @@ The **NOTIFICATIONS** label matters most when you set up a pump for the first ti
 - **Refresh:** Reads all data from the pump again. This is the same as the [startup sequence](#tandem-mobi-startup-sequence) that runs when **AAPS** starts.
 - **Data:** Opens [Data](#tandem-mobi-pump-data): notifications, events and pump history.
 - **Actions:** Opens [Actions](#tandem-mobi-actions).
-- **Pump Pair:** Starts [pairing with AAPS](#tandem-mobi-pair-aaps). Hidden when **Hide Pump Pair Button in Overview** is on.
+- **Pair Pump:** Starts [pairing with AAPS](#tandem-mobi-pair-aaps). Shown only while **Use Shared Connection** and **Hide Pump Pair Button in Overview** are both off.
 
 The buttons are disabled while the startup sequence is running.
 
@@ -406,7 +421,7 @@ To **resume** insulin delivery, tap **Start Insulin**, then **Resume insulin** t
 (tandem-mobi-stop-temp-basal)=
 #### Stopping a temp basal
 
-You can't stop insulin while a temp basal is running. When one is running, the Actions screen shows an extra **Stop Temp Rate** option with the active rate and time left.
+You can't stop insulin while a temp basal is running: **AAPS** asks you to stop the temp basal first. While one is running, the Actions screen shows an extra **Stop Temp Rate** option with the active rate and time left.
 
 ![The Actions screen while a temp basal is running](../images/tandem/v4_actions_tbr_running.jpg)
 
@@ -415,9 +430,7 @@ You can't stop insulin while a temp basal is running. When one is running, the A
 
    ![Stop Temp Rate confirmation](../images/tandem/v4_stop_temp_rate.jpg)
 
-3. Tap **Stop Insulin**.
-
-% VERIFY: Stop Insulin is shown as usable while a temp basal runs. Confirm it is still refused.
+3. You can now [stop insulin](#tandem-mobi-stop-resume).
 
 (tandem-mobi-cartridge-setup)=
 #### Cartridge and cannula setup
@@ -441,7 +454,7 @@ Insulin delivery must be stopped before you change the cartridge or fill the tub
 
 3. Wait while the pump finishes the cartridge change.
 
-   % SCREENSHOT: step 3 is missing (SCREENSHOTS.md: cart-3).
+   % SCREENSHOT: step 3 is missing (TODO.md: Actions).
 
 4. When the status shows **Cartridge change complete**, tap **Done**. You can now [fill the tubing](#tandem-mobi-fill-tubing).
 
@@ -471,7 +484,7 @@ Disconnect the pump from your body or infusion site before filling the tubing.
 
 3. The pump finishes the fill, and **AAPS** moves on automatically.
 
-   % SCREENSHOT: step 3 is missing (SCREENSHOTS.md: fill-3).
+   % SCREENSHOT: step 3 is missing (TODO.md: Actions).
 
 4. When the status says you can connect the infusion site, tap **Done**. Connect the site and [fill the cannula](#tandem-mobi-fill-cannula).
 
@@ -481,9 +494,9 @@ Disconnect the pump from your body or infusion site before filling the tubing.
 ##### Fill cannula
 
 1. Tap **Fill Cannula**.
-2. Enter the number of units your cannula needs and tap **Fill Cannula**.
+2. Enter the number of units your cannula needs, or tap one of the quick amounts (0.1, 0.3, 0.5 or 1.0 U), then tap **Fill Cannula**.
 
-% SCREENSHOT: no screenshot of Fill Cannula yet (SCREENSHOTS.md: cannula-1, cannula-2).
+% SCREENSHOT: no screenshot of Fill Cannula yet (TODO.md: Actions).
 
 (tandem-mobi-site-reminder)=
 ##### Site reminder
@@ -501,7 +514,7 @@ Site reminders are kept in **AAPS**, not on the pump.
 The screenshot above is from an earlier **AAPS** version. In **AAPS** 4 the screen looks different, but the presets and **Save** work the same way.
 ```
 
-% SCREENSHOT: site_reminder.jpg is pre-Compose UI (SCREENSHOTS.md: site-reminder).
+% SCREENSHOT: site_reminder.jpg is pre-Compose UI (TODO.md: Actions).
 
 (tandem-mobi-pump-info)=
 #### Pump Info
@@ -512,7 +525,9 @@ Tap **Pump Info** on the Actions screen to see technical information about the p
 
 At the bottom of the screen is **Debug Commands**.
 
-% VERIFY: describe what Debug Commands does and who should use it.
+```{warning}
+**Debug Commands** is a developer tool. It sends raw PumpX2 messages, including control commands, straight to the pump, outside the normal **AAPS** command flow. Don't use it unless a developer asks you to.
+```
 
 ```{note}
 When contacting Tandem support, don't mention **AAPS** or ControlX2: support staff won't know what they are and may be less helpful. Using **AAPS** should not void your warranty, but Tandem wants you to use their own software.
@@ -539,7 +554,7 @@ This view shows all notifications currently active on the pump. For what the dif
 Each notification shows its type and code (for example **Alert: MIN_BASAL_ALERT2**) and a short description of what it means.
 
 % SCREENSHOT: optional extra shot with an alert and a malfunction listed together
-% (SCREENSHOTS.md: data-notif).
+% (TODO.md: Data).
 
 - **Tap a notification to confirm it.** It is dismissed on the pump and disappears from the list, and the pump stops beeping or vibrating about it.
 - Most alerts and alarms come with a malfunction. Malfunctions can't be confirmed, but they disappear when the related alert or alarm is confirmed.
@@ -591,8 +606,11 @@ Check the app's permissions, including Location. See [If the pump can't be found
 If you forgot to charge the pump and it has shut down, don't panic. Charge it for about 15 minutes, then wake it from sleep mode (see [Powering on the Mobi](#tandem-mobi-power-on)). Start **AAPS** and the pump should be running. Then:
 
 1. Confirm the notification that the pump shut down. Confirm any other [notifications](#tandem-mobi-notifications) too, because they block the next steps.
-2. [Change the cartridge](#tandem-mobi-change-cartridge).
+2. [Change the cartridge](#tandem-mobi-change-cartridge), [fill the tubing](#tandem-mobi-fill-tubing) and [fill the cannula](#tandem-mobi-fill-cannula). **AAPS** won't start insulin until a cartridge change has been completed with a fill.
 3. [Start insulin](#tandem-mobi-stop-resume).
+
+% VERIFY: the old text listed only "change the cartridge, then Start Insulin". Confirm whether a
+% full cartridge change and fill is needed after a shutdown, or only a restart of delivery.
 
 (tandem-mobi-malfunction-codes)=
 ### Malfunction codes

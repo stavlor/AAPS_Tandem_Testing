@@ -3,13 +3,10 @@
 **Driver version:** {{ version }} (Phase 5 / Beta)
 
 :::{danger}
-**Important safety note.** This integration is in testing and is **not** approved for therapy.
-Testing on living persons or animals is strictly forbidden. Test with a pump that is not
-connected to anyone.
+**Important safety note.** This driver is in beta testing and is not part of an official **AAPS**
+release. Not all functionality is fully implemented or tested, and it may not work as expected.
+**Use it at your own risk.**
 :::
-
-% VERIFY: the README now says use of the driver is "at your own risk" instead of forbidding
-% testing on people. Confirm which wording applies and update this banner.
 
 The full pump documentation is on one page, laid out like the other pump pages in the
 [AAPS documentation](https://androidaps.readthedocs.io/), so it can move there when the driver is
@@ -17,16 +14,17 @@ released: **[Tandem Mobi](CompatiblePumps/TandemMobi.md)**.
 
 ## Beta testing
 
-While this implementation is already in the Beta phase, a few things still need to be done.
-Everything that is missing is listed as a feature request, and all bugs found are listed there too.
-You can find everything on the
-[AAPS_Tandem_Testing issues page](https://github.com/andyrozman/AAPS_Tandem_Testing/issues).
+The driver is in beta, but a few things still need to be done. Everything that is missing is
+listed as a feature request on the
+[AAPS_Tandem_Testing issues page](https://github.com/andyrozman/AAPS_Tandem_Testing/issues),
+along with all known bugs.
 
-If something doesn't work, check the issues page first. If you can't find it there, post a
-message in the testing Discord channel **#t_mobi-test** so we can discuss whether it is a bug or
-just how the implementation works. If we discover something new, we will add it as a bug.
+To start testing, follow the [Testing guide](testing/testing-guide.md). If something doesn't work,
+check the issues page first. If it isn't there, post in the **#t_mobi-test** Discord channel so we
+can discuss whether it is a bug or just how the driver works, and open an issue once it is
+confirmed. See [Where to get help](#tandem-mobi-where-to-get-help).
 
-The current plan is to finalize changes by the end of the year and then merge the driver into the
+The current plan is to finalize changes by the end of 2026 and then merge the driver into the
 official AAPS repository, ready for the Christmas release or the nearest release after it.
 
 :::{important}

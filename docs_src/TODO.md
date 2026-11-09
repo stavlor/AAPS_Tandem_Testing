@@ -10,11 +10,13 @@ go.
 ## How to capture
 
 - Use the same phone for every shot, AAPS in dark theme, no personal notifications in the status bar.
+  `python docs_src/tools/screenshots.py demo on` gives a clean status bar (fixed clock, full battery) on phones that support it.
+- Capture with the phone's screenshot button, or over USB with `python docs_src/tools/screenshots.py capture <name>`, which saves straight to `docs_src/images/tandem/` (needs `adb`).
 - Black out serial numbers, Bluetooth addresses and pairing data. `python docs_src/tools/screenshots.py redact FILE X Y W H` does it, or use any image editor.
 - Never include the AAPS home screen: it shows live glucose, heart rate and steps. Crop to the dialog instead.
 - Save to `docs_src/images/tandem/` with the file name below. *Refresh* items keep their current name, so the new file overwrites the old one.
 - Run `python docs_src/tools/screenshots.py normalize docs_src/images/tandem/<file>` to resize to 1080 px wide and compress.
-- On the page (`CompatiblePumps/TandemMobi.md`), point the image at the new file and delete its `% SCREENSHOT:` comment.
+- On the page (`CompatiblePumps/TandemMobi.md`), point the image at the new file and delete its `% SCREENSHOT:` comment. `grep -rn "% SCREENSHOT" docs_src` lists the ones left.
 
 ## Screenshots
 
@@ -36,14 +38,14 @@ Page section: [Setup](#tandem-mobi-setup)
   - Where: ControlX2 → Settings → Debug → View Pump State.
   - Set up: Pump paired. Make sure the Save to Clipboard option is visible.
   - **Redact:** The whole JSON body. It contains the pairing data.
-- [ ] **Overview with the Pump Pair button** — `v4_overview_pair_button.jpg` · New
+- [ ] **Overview with the Pair Pump button** — `v4_overview_pair_button.jpg` · New
   - Where: AAPS → Mobi overview.
-  - Set up: Use Shared Connection and Hide Pump Pair Button in Overview both off, so Pump Pair shows.
+  - Set up: Use Shared Connection and Hide Pump Pair Button in Overview both off, so Pair Pump shows.
   - **Redact:** Serial number and Bluetooth address.
 - [ ] **AAPS pairing wizard, every step** — `v4_pairing_wizard_1.jpg, _2.jpg, …` · New
-  - Where: Mobi overview → Pump Pair.
-  - Set up: One screenshot per wizard step, numbered in order.
-  - **Redact:** Serial number and Bluetooth address.
+  - Where: Mobi overview → Pair Pump (or Mobi settings → Tandem Pump Connection Wizard).
+  - Set up: One screenshot per wizard step, numbered in order: Begin Pairing, device list, PIN entry, connecting, Successfully Connected.
+  - **Redact:** Serial number, Bluetooth address and PIN.
 
 ### Pump Screen and bolus
 
@@ -149,27 +151,36 @@ Page: [Phase 1 documentation](archive/phase-1.md)
 
 ## Open questions
 
-Each one also has a `% VERIFY:` comment on its page. List them with `grep -rn "% VERIFY" docs_src`.
+Each open one also has a `% VERIFY:` comment on its page. List them with `grep -rn "% VERIFY" docs_src`.
 
 - [ ] [Pump Screen fields](#tandem-mobi-pump-screen): Does the top command card also list queued commands?
-- [ ] [Pump Screen fields](#tandem-mobi-pump-screen): How does the driver reconnect after losing the pump? The old text said auto-reconnect was coming in Phase 3.
+- [ ] [Pump Screen fields](#tandem-mobi-pump-screen): How does the driver reconnect after losing the pump? The old text said auto-reconnect was coming in Phase 3; the source now has auto-reconnect in the PumpX2 layer.
+- [ ] [Pump Screen fields](#tandem-mobi-pump-screen): Document the banner shown when the pump can't be reached and the warning when it is suspended (added in v0.8.14.10)?
 - [ ] [Mobi settings](#tandem-mobi-settings), Auto confirm Low Basal Delivery Alert: What is the actual threshold for the Low Basal Delivery Alert? The old text said “less than 50% ??”.
-- [ ] [B) Pairing with AAPS only](#tandem-mobi-pair-aaps): Is the overview button called **Pump Pair**, and does it open the pairing wizard?
-- [ ] [Pump Info](#tandem-mobi-pump-info): What does **Debug Commands** on the Pump Info screen do, and should testers use it?
-- [ ] [Stopping a temp basal](#tandem-mobi-stop-temp-basal): Does **Stop Insulin** still refuse while a temp basal runs? It shows as usable next to Stop Temp Rate.
+- [ ] [B) Pairing with AAPS only](#tandem-mobi-pair-aaps): Check the wizard steps (written from the source strings) against a real pairing.
 - [ ] [Events](#tandem-mobi-events): Is event support in the PumpX2 library still incomplete?
-- [ ] [Pump capabilities with AAPS](#tandem-mobi-capabilities): Confirm the last two bullets (pump history; cartridge and cannula), added from elsewhere on the old page.
-- [ ] [Development phases](testing/phases.md): Add the tags released since Phase 1.
+- [ ] [Pump history](#tandem-mobi-history-reading): Phase 4 uses history for safety checks. Is “history is not used by the driver” still true?
 - [ ] [Troubleshooting](#tandem-mobi-troubleshooting): Does the Bluetooth off/on tip from the Phase 1 docs still apply?
-- [ ] [Home page](index.md) and [Testing guide](testing/testing-guide.md): Is the “testing on people is forbidden” safety banner (from the Phase 2/3 README) still current for the beta?
+- [ ] [Troubleshooting](#tandem-mobi-troubleshooting), pump powered down: Is a full cartridge change and fill needed, or only a restart of delivery?
+- [ ] [Development phases](testing/phases.md): Short notes for the 0.5–0.8 tags, and which versions belong to which phase.
+
+Resolved:
+
+- [x] Pairing button name: it is **Pair Pump** on the Pump Screen; the wizard also opens from **Tandem Pump Connection Wizard** in the settings. The wizard needs the 6-digit PIN from inside the cartridge bay.
+- [x] **Debug Commands**: a developer tool that sends raw PumpX2 messages; documented with a warning.
+- [x] **Stop Insulin** while a temp basal runs: still refused (“Before stopping delivery, you need to stop the active Temp Basal Rate”).
+- [x] Capabilities bullets for pump history and cartridge/cannula: confirmed in the driver.
+- [x] Tags since Phase 1: listed on [Development phases](testing/phases.md).
+- [x] Safety banner: all pages now use the README's beta / “use at your own risk” wording.
+- [x] Testing from the branch vs. tags: the branch is the default; issues are welcome from either once confirmed in Discord.
 
 ## Before publishing
 
 - [ ] Change the push trigger in `.github/workflows/docs.yml` back from `[testing_v4]` to `[testing]` before merging upstream.
-- [ ] Work-in-progress preview on the fork (stavlor.github.io/AAPS_Tandem_Testing): enable Actions and set Pages source to GitHub Actions in the fork, then push to `testing`.
-
-- [ ] Set GitHub Pages source to **GitHub Actions** (repo Settings → Pages), so the workflow can deploy.
-- [ ] Delete the old images left directly in `docs_src/images/`. Everything still used moved to `docs_src/images/tandem/`, so what's left there is superseded and no longer referenced.
+- [ ] Work-in-progress preview on the fork (stavlor.github.io/AAPS_Tandem_Testing): enable Actions and set Pages source to GitHub Actions in the fork, then push to `testing_v4` (the branch the workflow builds for now).
+- [ ] On the upstream repo, set GitHub Pages source to **GitHub Actions** (Settings → Pages), so the workflow can deploy.
+- [x] Delete the old images left directly in `docs_src/images/` (superseded, no longer referenced).
+- [ ] Once the Sphinx site is live upstream, delete the old hand-written site: `docs/index.html`, `docs/index_phase_1.html` and `docs/pics/`. Its images were either copied to `docs_src/images/tandem/` or superseded by v4 shots (`pref_v2_up/down.jpg`, `SiteReminder.jpg`, `start_pump.png`, `cartridge_actions.png`).
 - [ ] Import the repo on Read the Docs (readthedocs.org → Add project → AAPS_Tandem_Testing). Needs admin rights on the GitHub repo for automatic builds on push, so Andy may need to do it or add you as a maintainer.
 - [ ] On Read the Docs, set the default branch to `testing` and turn on pull request previews (Settings → Pull request builds).
 - [ ] Decide which site is the main one (GitHub Pages or Read the Docs) and point README.md's documentation link at it.
