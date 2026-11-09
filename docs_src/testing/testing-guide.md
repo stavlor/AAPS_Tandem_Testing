@@ -20,6 +20,15 @@ strictly forbidden. Test with a pump that is not connected to anyone.
    git checkout andy_tandem_dev4
    ```
 
+## Building AAPS (per update as needed)
+1. You should have the repo [AAPS Tandem Development Repo](https://github.com/andyrozman/AndroidAPS) checked out locally.
+2. Install [Android Studio Rabbit 2](https://developer.android.com/studio/releases) if not already installed.
+3. Open the folder that you checked out the andy_tandem_dev4 branch into and wait for Gradle to finish processing.
+4. Once gradle has finished importing the project go to Build -> Generate Signed App Bundle or APK choose APK.
+5. Create a keystore if needed and remember its password you will need this for any future updates.
+6. Build module AndroidAPS.app either fullDebug or fullRelease.
+
+
 ## Prepare AAPS (one-time)
 
 1. Open the menu in the top-left corner, go to **Maintenance → Log Settings**, and enable the
@@ -30,6 +39,8 @@ strictly forbidden. Test with a pump that is not connected to anyone.
    Nightscout URL first**, or test data will go to that instance's Nightscout.
 3. If you run into errors, post in the Discord channel first, so we avoid duplicates and reports
    about features that aren't developed yet.
+4. This is a developmental build see [AAPS Wiki - FAQ](https://androidaps.readthedocs.io/en/latest/UsefulLinks/FAQ.html#alert-running-dev-version-closed-loop-is-disabled)
+   for important information about enabling closed loop.
 
 ## What to test from
 
